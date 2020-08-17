@@ -86,5 +86,27 @@ export default class GameScene extends Scene {
         frameRate: 20,
         repeat: -1,
       });
+
+      this.sfx = {
+        explosions: [
+          this.sound.add('sndExplode0'),
+          this.sound.add('sndExplode1'),
+        ],
+        laser: this.sound.add('sndLaser'),
+      };
+
+      this.backgrounds = [];
+      for (let i = 0; i < 5; i++) {
+        const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
+        this.backgrounds.push(bg);
+      }
+  
+      this.player = new Player(
+        this,
+        this.game.config.width * 0.5,
+        this.game.config.height * 0.9,
+        'sprPlayer',
+      );
+      this.createCursors();
   }
 }
