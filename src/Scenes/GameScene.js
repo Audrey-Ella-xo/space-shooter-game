@@ -218,4 +218,79 @@ export default class GameScene extends Scene {
     }
     return arr;
   }
+
+  update() {
+    if (!this.player.getData('isDead')) {
+      this.player.update();
+
+      if (this.cursors.up.isDown) {
+        this.player.moveUp();
+      } else if (this.cursors.down.isDown) {
+        this.player.moveDown();
+      }
+
+      if (this.cursors.left.isDown) {
+        this.player.moveLeft();
+      } else if (this.cursors.right.isDown) {
+        this.player.moveRight();
+      }
+
+      if (this.keySpace.isDown) {
+        this.player.setData('isShooting', true);
+      } else {
+        this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
+        this.player.setData('isShooting', false);
+      }
+    }
+
+    for (let i = 0; i < this.enemies.getChildren().length; i++) {
+      const enemy = this.enemies.getChildren()[i];
+
+      enemy.update();
+      if (enemy.x < -enemy.displayWidth
+            || enemy.x > this.game.config.width + enemy.displayWidth
+            || enemy.y < -enemy.displayHeight * 4
+            || enemy.y > this.game.config.height + enemy.displayHeight) {
+        if (enemy) {
+          if (enemy.onDestroy !== undefined) {
+            enemy.onDestroy();
+          }
+
+          enemy.destroy();
+        }
+      }
+    }
+
+    for (let i = 0; i < this.enemyLasers.getChildren().length; i++) {
+      const laser = this.enemyLasers.getChildren()[i];
+      laser.update();
+
+      if (laser.x < -laser.displayWidth
+          || laser.x > this.game.config.width + laser.displayWidth
+          || laser.y < -laser.displayHeight * 4
+          || laser.y > this.game.config.height + laser.displayHeight) {
+        if (laser) {
+          laser.destroy();
+        }
+      }
+    }
+
+    for (let i = 0; i < this.playerLasers.getChildren().length; i++) {
+      const laser = this.playerLasers.getChildren()[i];
+      laser.update();
+
+      if (laser.x < -laser.displayWidth
+          || laser.x > this.game.config.width + laser.displayWidth
+          || laser.y < -laser.displayHeight * 4
+          || laser.y > this.game.config.height + laser.displayHeight) {
+        if (laser) {
+          laser.destroy();
+        }
+      }
+    }
+
+    for (let i = 0; i < this.backgrounds.length; i++) {
+      this.backgrounds[i].update();
+    }
+  }
 }
