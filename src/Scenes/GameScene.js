@@ -172,5 +172,25 @@ export default class GameScene extends Scene {
           enemy.explode(true);
         }
       });
+
+      this.health = this.gameOptions.initialTime;
+    const energyContainer = this.add.sprite(700, 35, 'energycontainer');
+    const energyBar = this.add.sprite(energyContainer.x + 11, energyContainer.y, 'energybar');
+    this.energyMask = this.add.sprite(energyBar.x, energyBar.y, 'energybar');
+    this.energyMask.visible = false;
+
+    energyBar.mask = new Phaser.Display.Masks.BitmapMask(this, this.energyMask);
+
+    this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
+      this.health--;
+      const stepWidth = this.energyMask.displayWidth / this.gameOptions.initialHealth;
+      this.energyMask.x -= stepWidth;
+      if (this.health === 0 && !player.getData('isDead')
+                && !enemy.getData('isDead')) {
+        player.explode(false);
+        player.onDestroy();
+        enemy.explode(true);
+      }
+    }, null, this);
   }
 }
