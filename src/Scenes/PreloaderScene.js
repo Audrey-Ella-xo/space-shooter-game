@@ -12,10 +12,15 @@ export default class PreloaderScene extends Scene {
   }
 
   preload() {
-    // add logo image
-    this.add.image(400, 300, 'logo');
+    // ======================================================
+    //                      add logo image
+    // ======================================================
 
-    // display progress bar
+    this.add.image(400, 300, 'logo');
+    // ======================================================
+    //                      Display progress bar
+    // ======================================================
+
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
@@ -55,8 +60,9 @@ export default class PreloaderScene extends Scene {
       },
     });
     assetText.setOrigin(0.5, 0.5);
-
-    // update progress bar
+    // ======================================================
+    //                      Update progress bar
+    // ======================================================
     this.load.on('progress', (value) => {
       // eslint-disable-next-line radix
       percentText.setText(`${parseInt(value * 100)}%`);
@@ -64,13 +70,17 @@ export default class PreloaderScene extends Scene {
       progressBar.fillStyle(0xffffff, 1);
       progressBar.fillRect(250, 280, 300 * value, 30);
     });
-
-    // update file progress text
+    // ======================================================
+    //                      Update file progress text
+    // ======================================================
     this.load.on('fileprogress', (file) => {
       assetText.setText(`Loading asset: ${file.key}`);
     });
 
-    // remove progress bar when complete
+    // ======================================================
+    //            Remove progress bar when complete
+    // ======================================================
+
     this.load.on('complete', () => {
       progressBar.destroy();
       progressBox.destroy();
@@ -81,8 +91,10 @@ export default class PreloaderScene extends Scene {
     });
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
+    // ======================================================
+    //              load ./assets needed in our game
+    // ======================================================
 
-    // load ./assets needed in our game
     this.load.image('blueButton1', './assets/ui/blue_button02.png');
     this.load.image('blueButton2', './assets/ui/blue_button03.png');
     this.load.image('box', './assets/ui/grey_box.png');
@@ -95,8 +107,5 @@ export default class PreloaderScene extends Scene {
     if (this.readyCount === 2) {
       this.scene.start('About');
     }
-  }
-
-  create() {
   }
 }

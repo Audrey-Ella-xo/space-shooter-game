@@ -9,7 +9,6 @@ export default class LeaderBoardScene extends Scene {
   }
 
   create() {
-    // this.add.image(400, 300, 'logo');
     this.getScores = getScoreBoard();
     this.displayData = [];
     this.topScorers = this.add.text(
@@ -42,8 +41,9 @@ export default class LeaderBoardScene extends Scene {
         });
       }
     });
-
-    // Buttons
+    // ======================================================
+    //                      Buttons
+    // ======================================================
     this.restartButton = new Button(this, this.sys.game.config.width / 2, this.sys.game.config.height - 200, 'blueButton1', 'blueButton2', 'Restart!', 'Game');
     this.menuButton = new Button(this, this.sys.game.config.width / 2, this.sys.game.config.height - 120, 'blueButton1', 'blueButton2', 'Menu', 'Title');
   }

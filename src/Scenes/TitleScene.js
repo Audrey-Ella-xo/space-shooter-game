@@ -10,13 +10,21 @@ export default class TitleScene extends Scene {
   }
 
   create() {
-    // Game
+    // ======================================================
+    //                     Game
+    // ======================================================
+
     this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'blueButton1', 'blueButton2', 'Play', 'Game');
 
-    // Options
+    // ======================================================
+    //                     Options
+    // ======================================================
+
     this.optionsButton = new Button(this, config.width / 2, config.height / 2, 'blueButton1', 'blueButton2', 'Options', 'Options');
 
-    // Credits
+    // ======================================================
+    //                      Credits
+    // ======================================================
     this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 100, 'blueButton1', 'blueButton2', 'Credits', 'Credits');
 
     this.model = this.sys.game.globals.model;
