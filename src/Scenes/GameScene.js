@@ -19,4 +19,12 @@ export default class GameScene extends Scene {
           initialHealth: 100,
         };
       }
+
+      // ======================================================
+  //                      Preload
+  // ======================================================
+
+  preload() {
+    
+  }
 }
