@@ -11,16 +11,16 @@ import {
 } from '../Entities';
 
 export default class GameScene extends Scene {
-    constructor() {
-        super('Game');
-        this.score = 0;
-        this.scoreLabel = undefined;
-        this.gameOptions = {
-          initialHealth: 100,
-        };
-      }
+  constructor() {
+    super('Game');
+    this.score = 0;
+    this.scoreLabel = undefined;
+    this.gameOptions = {
+      initialHealth: 100,
+    };
+  }
 
-      // ======================================================
+  // ======================================================
   //                      Preload
   // ======================================================
 
@@ -60,120 +60,120 @@ export default class GameScene extends Scene {
 
   create() {
     this.anims.create({
-        key: 'sprEnemy0',
-        frames: this.anims.generateFrameNumbers('sprEnemy0'),
-        frameRate: 20,
-        repeat: -1,
-      });
-  
-      this.anims.create({
-        key: 'sprEnemy2',
-        frames: this.anims.generateFrameNumbers('sprEnemy2'),
-        frameRate: 20,
-        repeat: -1,
-      });
-  
-      this.anims.create({
-        key: 'sprExplosion',
-        frames: this.anims.generateFrameNumbers('sprExplosion'),
-        frameRate: 20,
-        repeat: 0,
-      });
-  
-      this.anims.create({
-        key: 'sprPlayer',
-        frames: this.anims.generateFrameNumbers('sprPlayer'),
-        frameRate: 20,
-        repeat: -1,
-      });
+      key: 'sprEnemy0',
+      frames: this.anims.generateFrameNumbers('sprEnemy0'),
+      frameRate: 20,
+      repeat: -1,
+    });
 
-      this.sfx = {
-        explosions: [
-          this.sound.add('sndExplode0'),
-          this.sound.add('sndExplode1'),
-        ],
-        laser: this.sound.add('sndLaser'),
-      };
+    this.anims.create({
+      key: 'sprEnemy2',
+      frames: this.anims.generateFrameNumbers('sprEnemy2'),
+      frameRate: 20,
+      repeat: -1,
+    });
 
-      this.backgrounds = [];
-      for (let i = 0; i < 5; i++) {
-        const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
-        this.backgrounds.push(bg);
-      }
-  
-      this.player = new Player(
-        this,
-        this.game.config.width * 0.5,
-        this.game.config.height * 0.9,
-        'sprPlayer',
-      );
-      this.createCursors();
+    this.anims.create({
+      key: 'sprExplosion',
+      frames: this.anims.generateFrameNumbers('sprExplosion'),
+      frameRate: 20,
+      repeat: 0,
+    });
 
-      this.enemies = this.add.group();
+    this.anims.create({
+      key: 'sprPlayer',
+      frames: this.anims.generateFrameNumbers('sprPlayer'),
+      frameRate: 20,
+      repeat: -1,
+    });
+
+    this.sfx = {
+      explosions: [
+        this.sound.add('sndExplode0'),
+        this.sound.add('sndExplode1'),
+      ],
+      laser: this.sound.add('sndLaser'),
+    };
+
+    this.backgrounds = [];
+    for (let i = 0; i < 5; i++) {
+      const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
+      this.backgrounds.push(bg);
+    }
+
+    this.player = new Player(
+      this,
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.9,
+      'sprPlayer',
+    );
+    this.createCursors();
+
+    this.enemies = this.add.group();
     this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
     this.scoreLabel = this.createScoreLabel(16, 16, 0);
 
     this.time.addEvent({
-        delay: 2000,
-        callback() {
-          let enemy = null;
-  
-          if (Phaser.Math.Between(0, 10) >= 3) {
-            enemy = new GunShip(
-              this,
-              Phaser.Math.Between(0, this.game.config.width),
-              0,
-            );
-          } else if (Phaser.Math.Between(0, 10) >= 5) {
-            if (this.getEnemiesByType('ChaserShip').length < 5) {
-              enemy = new ChaserShip(
-                this,
-                Phaser.Math.Between(0, this.game.config.width),
-                0,
-              );
-            }
-          } else {
-            enemy = new CarrierShip(
-              this,
-              Phaser.Math.Between(0, this.game.config.width),
-              0,
-            );
-          }
-  
-          if (enemy !== null) {
-            enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
-            this.enemies.add(enemy);
-          }
-        },
-        callbackScope: this,
-        loop: true,
-      });
-      this.physics.add.collider(this.playerLasers, this.enemies, function (playerLaser, enemy) {
-        if (enemy) {
-          if (enemy.onDestroy !== undefined) {
-            enemy.onDestroy();
-          }
-  
-          enemy.explode(true);
-          playerLaser.destroy();
-  
-          this.scoreLabel.add(10);
-          this.score += 10;
-          storeScore(this.score);
-        }
-      }, null, this);
-  
-      this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
-        if (!player.getData('isDead')
-              && !enemy.getData('isDead')) {
-          player.explode(false);
-          player.onDestroy();
-          enemy.explode(true);
-        }
-      });
+      delay: 2000,
+      callback() {
+        let enemy = null;
 
-      this.health = this.gameOptions.initialTime;
+        if (Phaser.Math.Between(0, 10) >= 3) {
+          enemy = new GunShip(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          );
+        } else if (Phaser.Math.Between(0, 10) >= 5) {
+          if (this.getEnemiesByType('ChaserShip').length < 5) {
+            enemy = new ChaserShip(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            );
+          }
+        } else {
+          enemy = new CarrierShip(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          );
+        }
+
+        if (enemy !== null) {
+          enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+          this.enemies.add(enemy);
+        }
+      },
+      callbackScope: this,
+      loop: true,
+    });
+    this.physics.add.collider(this.playerLasers, this.enemies, function (playerLaser, enemy) {
+      if (enemy) {
+        if (enemy.onDestroy !== undefined) {
+          enemy.onDestroy();
+        }
+
+        enemy.explode(true);
+        playerLaser.destroy();
+
+        this.scoreLabel.add(10);
+        this.score += 10;
+        storeScore(this.score);
+      }
+    }, null, this);
+
+    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+      if (!player.getData('isDead')
+            && !enemy.getData('isDead')) {
+        player.explode(false);
+        player.onDestroy();
+        enemy.explode(true);
+      }
+    });
+
+    this.health = this.gameOptions.initialTime;
     const energyContainer = this.add.sprite(700, 35, 'energycontainer');
     const energyBar = this.add.sprite(energyContainer.x + 11, energyContainer.y, 'energybar');
     this.energyMask = this.add.sprite(energyBar.x, energyBar.y, 'energybar');
