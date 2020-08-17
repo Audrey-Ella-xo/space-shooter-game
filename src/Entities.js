@@ -108,6 +108,131 @@ class Entity extends Phaser.GameObjects.Sprite {
     }
   }
 
+  class EnemyLaser extends Entity {
+    constructor(scene, x, y) {
+      super(scene, x, y, 'sprLaserEnemy0');
+      this.body.velocity.y = 200;
+    }
+  }
+  
+  class ChaserShip extends Entity {
+    constructor(scene, x, y) {
+      super(scene, x, y, 'sprEnemy1', 'ChaserShip');
+      this.body.velocity.y = Phaser.Math.Between(50, 100);
+  
+      this.states = {
+        MOVE_DOWN: 'MOVE_DOWN',
+        CHASE: 'CHASE',
+      };
+      this.state = this.states.MOVE_DOWN;
+    }
+  
+    update() {
+      if (!this.getData('isDead') && this.scene.player) {
+        if (Phaser.Math.Distance.Between(
+          this.x,
+          this.y,
+          this.scene.player.x,
+          this.scene.player.y,
+        ) < 320) {
+          this.state = this.states.CHASE;
+        }
+  
+        if (this.state === this.states.CHASE) {
+          const dx = this.scene.player.x - this.x;
+          const dy = this.scene.player.y - this.y;
+  
+          const angle = Math.atan2(dy, dx);
+  
+          const speed = 100;
+          this.body.setVelocity(
+            Math.cos(angle) * speed,
+            Math.sin(angle) * speed,
+          );
+        }
+  
+        if (this.x < this.scene.player.x) {
+          this.angle -= 5;
+        } else {
+          this.angle += 5;
+        }
+      }
+    }
+  }
+  
+  class GunShip extends Entity {
+    constructor(scene, x, y) {
+      super(scene, x, y, 'sprEnemy0', 'GunShip');
+      this.body.velocity.y = Phaser.Math.Between(50, 100);
+      this.shootTimer = this.scene.time.addEvent({
+        delay: 1000,
+        callback() {
+          const laser = new EnemyLaser(
+            this.scene,
+            this.x,
+            this.y,
+          );
+          laser.setScale(this.scaleX);
+          this.scene.enemyLasers.add(laser);
+        },
+        callbackScope: this,
+        loop: true,
+      });
+      this.play('sprEnemy0');
+    }
+  
+    onDestroy() {
+      if (this.shootTimer !== undefined) {
+        if (this.shootTimer) {
+          this.shootTimer.remove(false);
+        }
+      }
+    }
+  }
+
+  class CarrierShip extends Entity {
+    constructor(scene, x, y) {
+      super(scene, x, y, 'sprEnemy2', 'CarrierShip');
+      this.body.velocity.y = Phaser.Math.Between(50, 100);
+      this.play('sprEnemy2');
+    }
+  }
+
+  class ScrollingBackground {
+    constructor(scene, key, velocityY) {
+      this.scene = scene;
+      this.key = key;
+      this.velocityY = velocityY;
+      this.layers = this.scene.add.group();
+      this.createLayers();
+    }
+  
+    createLayers() {
+      for (let i = 0; i < 2; i += 1) {
+        // creating two backgrounds will allow a continuous scroll
+        const layer = this.scene.add.sprite(0, 0, this.key);
+        layer.y = (layer.displayHeight * i);
+        const flipX = Phaser.Math.Between(0, 10) >= 5 ? -1 : 1;
+        const flipY = Phaser.Math.Between(0, 10) >= 5 ? -1 : 1;
+        layer.setScale(flipX * 2, flipY * 2);
+        layer.setDepth(-5 - (i - 1));
+        this.scene.physics.world.enableBody(layer, 0);
+        layer.body.velocity.y = this.velocityY;
+  
+        this.layers.add(layer);
+      }
+    }
+  
+    update() {
+      if (this.layers.getChildren()[0].y > 0) {
+        for (let i = 0; i < this.layers.getChildren().length; i += 1) {
+          const layer = this.layers.getChildren()[i];
+          layer.y = (-layer.displayHeight) + (layer.displayHeight * i);
+        }
+      }
+    }
+  }
+
 export {
     Player, EnemyLaser, ChaserShip, GunShip, CarrierShip, ScrollingBackground,
 };
