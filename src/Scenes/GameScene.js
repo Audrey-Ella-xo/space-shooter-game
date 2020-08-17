@@ -53,4 +53,12 @@ export default class GameScene extends Scene {
     this.load.audio('sndExplode1', './assets/audio/sndExplode1.wav');
     this.load.audio('sndLaser', './assets/audio/sndLaser.wav');
   }
+
+  // ======================================================
+  //                      Create
+  // ======================================================
+
+  create() {
+    
+  }
 }
