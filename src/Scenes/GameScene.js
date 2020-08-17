@@ -207,4 +207,15 @@ export default class GameScene extends Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
   }
+
+  getEnemiesByType(type) {
+    const arr = [];
+    for (let i = 0; i < this.enemies.getChildren().length; i++) {
+      const enemy = this.enemies.getChildren()[i];
+      if (enemy.getData('type') === type) {
+        arr.push(enemy);
+      }
+    }
+    return arr;
+  }
 }
