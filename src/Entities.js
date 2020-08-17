@@ -78,12 +78,12 @@ class Player extends Entity {
 
     if (this.getData('isShooting')) {
       if (this.getData('timerShootTick') < this.getData('timerShootDelay')) {
-        this.setData('timerShootTick', this.getData('timerShootTick') + 1); 
-      } else { 
+        this.setData('timerShootTick', this.getData('timerShootTick') + 1);
+      } else {
         const laser = new PlayerLaser(this.scene, this.x, this.y);
         this.scene.playerLasers.add(laser);
 
-        this.scene.sfx.laser.play(); 
+        this.scene.sfx.laser.play();
         this.setData('timerShootTick', 0);
       }
     }
@@ -209,7 +209,6 @@ class ScrollingBackground {
 
   createLayers() {
     for (let i = 0; i < 2; i += 1) {
-     
       const layer = this.scene.add.sprite(0, 0, this.key);
       layer.y = (layer.displayHeight * i);
       const flipX = Phaser.Math.Between(0, 10) >= 5 ? -1 : 1;
