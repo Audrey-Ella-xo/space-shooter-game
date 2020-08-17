@@ -114,5 +114,63 @@ export default class GameScene extends Scene {
     this.playerLasers = this.add.group();
     this.scoreLabel = this.createScoreLabel(16, 16, 0);
 
+    this.time.addEvent({
+        delay: 2000,
+        callback() {
+          let enemy = null;
+  
+          if (Phaser.Math.Between(0, 10) >= 3) {
+            enemy = new GunShip(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            );
+          } else if (Phaser.Math.Between(0, 10) >= 5) {
+            if (this.getEnemiesByType('ChaserShip').length < 5) {
+              enemy = new ChaserShip(
+                this,
+                Phaser.Math.Between(0, this.game.config.width),
+                0,
+              );
+            }
+          } else {
+            enemy = new CarrierShip(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            );
+          }
+  
+          if (enemy !== null) {
+            enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+            this.enemies.add(enemy);
+          }
+        },
+        callbackScope: this,
+        loop: true,
+      });
+      this.physics.add.collider(this.playerLasers, this.enemies, function (playerLaser, enemy) {
+        if (enemy) {
+          if (enemy.onDestroy !== undefined) {
+            enemy.onDestroy();
+          }
+  
+          enemy.explode(true);
+          playerLaser.destroy();
+  
+          this.scoreLabel.add(10);
+          this.score += 10;
+          storeScore(this.score);
+        }
+      }, null, this);
+  
+      this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+        if (!player.getData('isDead')
+              && !enemy.getData('isDead')) {
+          player.explode(false);
+          player.onDestroy();
+          enemy.explode(true);
+        }
+      });
   }
 }
