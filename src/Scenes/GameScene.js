@@ -108,5 +108,11 @@ export default class GameScene extends Scene {
         'sprPlayer',
       );
       this.createCursors();
+
+      this.enemies = this.add.group();
+    this.enemyLasers = this.add.group();
+    this.playerLasers = this.add.group();
+    this.scoreLabel = this.createScoreLabel(16, 16, 0);
+
   }
 }
