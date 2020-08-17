@@ -193,4 +193,18 @@ export default class GameScene extends Scene {
       }
     }, null, this);
   }
+
+  createScoreLabel(x, y, score) {
+    const style = { fontSize: '28px', fill: '#fff', fontFamily: 'Russo One' };
+    const label = new ScoreLabel(this, x, y, score, style);
+
+    this.add.existing(label);
+
+    return label;
+  }
+
+  createCursors() {
+    this.cursors = this.input.keyboard.createCursorKeys();
+    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+  }
 }
