@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "webpack --config webpack/prod.js ",
-    "start": "npm run build && webpack-dev-server --config webpack/base.js --open && webpack-dev-server --host=0.0.0.0 --port=$PORT",
+    "start": "webpack-dev-server --config webpack/base.js --open",
     "test": "jest",
     "watch": "jest --watch"
   },
@@ -48,6 +48,5 @@
     "node-fetch": "^2.6.0",
     "phaser": "^3.24.1",
     "regenerator-runtime": "^0.13.7"
-  },
-  "heroku-run-build-script": true
+  }
 }
