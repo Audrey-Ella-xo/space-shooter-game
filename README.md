@@ -25,7 +25,7 @@
     <img src="https://raw.githubusercontent.com/euqueme/toy-app/master/app/assets/images/mLogo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Weather App</h3>
+  <h3 align="center">Space Shooter</h3>
 
   <p align="center">
     This project is part of the Microverse Javascript curriculum!
@@ -45,7 +45,7 @@
 This project is a simple space shooter game, that was built in an effort to cement all the skills learned throughout the Javascript course.
 
 #### Screenshot
-![image](./assets/ShooterScreenshots/GameScene.png)
+![image](src\assets\ShooterScreenshots\GameScene.png)
 ## 1. Getting Started: Additional description about the project and its features
 
 This project is configured to be as simple as possible; build, deploy, and play with, all with npm.
@@ -143,11 +143,11 @@ npm run test
 
 | SCENES              | SCREENSHOT |
 | :----               |   :----:   |
-| `About Scene`        | ![aboutScene](./assets/ShooterScreenshots/Introduction.png)           |
-| `Title Scene`      | ![TitleScene](./assets/ShooterScreenshots/Title.png)       |
-| `Game Over Scene`     | ![GameOverScene](./assets/ShooterScreenshots/GameOver.png)     |
-| `Leaders Board Scene` | ![LeadersBoardScene](./assets/ShooterScreenshots/ScoreBoard.png) |
-| `Credits Scene`      | ![CreditsScene](./assets/ShooterScreenshots/Credits.png)       |
+| `About Scene`        | ![aboutScene](src\assets\ShooterScreenshots\Introduction.png)           |
+| `Title Scene`      | ![TitleScene](src\assets\ShooterScreenshots\Title.png)       |
+| `Game Over Scene`     | ![GameOverScene](src\assets\ShooterScreenshots\GameOver.png)     |
+| `Leaders Board Scene` | ![LeadersBoardScene](src\assets\ShooterScreenshots\ScoreBoard.png) |
+| `Credits Scene`      | ![CreditsScene](src\assets\ShooterScreenshots\Credits.png)       |
 ---
 
 ## 7. Live Play
