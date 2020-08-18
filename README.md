@@ -45,7 +45,7 @@
 This project is a simple space shooter game, that was built in an effort to cement all the skills learned throughout the Javascript course.
 
 #### Screenshot
-![image](src\assets\ShooterScreenshots\GameScene.png)
+![image](/src/assets/ShooterScreenshots/GameScene.png)
 ## 1. Getting Started: Additional description about the project and its features
 
 This project is configured to be as simple as possible; build, deploy, and play with, all with npm.
@@ -143,11 +143,11 @@ npm run test
 
 | SCENES              | SCREENSHOT |
 | :----               |   :----:   |
-| `About Scene`        | ![aboutScene](src\assets\ShooterScreenshots\Introduction.png)           |
-| `Title Scene`      | ![TitleScene](src\assets\ShooterScreenshots\Title.png)       |
-| `Game Over Scene`     | ![GameOverScene](src\assets\ShooterScreenshots\GameOver.png)     |
-| `Leaders Board Scene` | ![LeadersBoardScene](src\assets\ShooterScreenshots\ScoreBoard.png) |
-| `Credits Scene`      | ![CreditsScene](src\assets\ShooterScreenshots\Credits.png)       |
+| `About Scene`        | ![aboutScene](/src/assets/ShooterScreenshots/Introduction.png)           |
+| `Title Scene`      | ![TitleScene](/src/assets/ShooterScreenshots/Title.png)       |
+| `Game Over Scene`     | ![GameOverScene](/src/assets/ShooterScreenshots/GameOver.png)     |
+| `Leaders Board Scene` | ![LeadersBoardScene](/src/assets/ShooterScreenshots/ScoreBoard.png) |
+| `Credits Scene`      | ![CreditsScene](/src/assets/ShooterScreenshots/Credits.png)       |
 ---
 
 ## 7. Live Play
