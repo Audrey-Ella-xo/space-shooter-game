@@ -115,7 +115,7 @@ export default class GameScene extends Scene {
     this.scoreLabel = this.createScoreLabel(16, 16, 0);
 
     this.time.addEvent({
-      delay: 2000,
+      delay: 1500,
       callback() {
         let enemy = null;
 
