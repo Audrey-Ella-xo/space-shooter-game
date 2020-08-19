@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+/* eslint-disable import/no-unresolved */
 import { Scene } from 'phaser';
 import config from '../Config/config';
 import Button from '../Objects/Button';

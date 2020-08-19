@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-undef */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable func-names */
 import { Scene } from 'phaser';
 import config from '../Config/config';
 

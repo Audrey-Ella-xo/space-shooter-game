@@ -3,6 +3,7 @@
 /* eslint-disable no-mixed-operators */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-plusplus */
+/* eslint-disable import/no-unresolved */
 import { Scene } from 'phaser';
 import { storeScore } from '../localStorage';
 import ScoreLabel from '../ScoreLabel';

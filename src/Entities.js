@@ -1,5 +1,7 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable no-use-before-define */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable func-names */
 import Phaser from 'phaser';
 
 class Entity extends Phaser.GameObjects.Sprite {
