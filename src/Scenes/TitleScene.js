@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+/* eslint-disable no-mixed-operators */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable class-methods-use-this */
 import { Scene } from 'phaser';

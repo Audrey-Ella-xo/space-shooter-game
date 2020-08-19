@@ -1,4 +1,5 @@
 /* eslint-disable import/no-unresolved */
+/* eslint-disable import/first */
 import './main.scss';
 import Phaser from 'phaser';
 import config from './Config/config';
