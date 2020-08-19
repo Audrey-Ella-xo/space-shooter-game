@@ -105,14 +105,7 @@ npx eslint .
 npm run test
 ```
 
-### Deployment
-
-|  APP NAME | BUILD STATUS: |
-|   :---:   |    :---:     |
-|**Ella's Shooter Game** | [![Netlify Status](#)](#) |
-
 ---
-
 ## 4. Game Development Guidelines & Timelines
 
 | TIMELINE    |  TODO  |  DESCRIPTION  |    OUTCOME   |  STATUS   |
@@ -152,7 +145,7 @@ npm run test
 
 ## 7. Live Play
 
-[Link to Live Play](#)
+[Link to Live Play](https://dazzling-heisenberg-c31479.netlify.app/)
 
 ---
 
