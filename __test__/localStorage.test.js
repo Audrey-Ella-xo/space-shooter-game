@@ -1,20 +1,30 @@
 const localStorageTest = require('../__mocks__/localStorage.mocks');
 
-describe(' Tests the getting score in localStorage if return == 0', () => {
+describe(' Tests the getting score of 0 from local storage', () => {
   let score;
-  test('returning 0 if no coins\' available in localStorage', () => {
+  test('returning 0 if no scores available in localStorage', () => {
     score = localStorageTest.getCurrentScoreTest();
     expect(score).toBe(0);
   });
 });
 
-describe('Tests the score retrieval func from localStorage', () => {
+describe('Tests getting score func from localStorage', () => {
   let score;
 
   test('get requested stored data in the localStorage', () => {
     localStorageTest.storeScoreTest(390);
     score = localStorageTest.getCurrentScoreTest();
     expect(score).toBe(390);
+  });
+});
+
+describe('Tests getting valid score from localStorage', () => {
+  let score;
+
+  test('return error if stored data in localStorage is invalid', () => {
+    localStorageTest.storeScoreTest('390');
+    score = localStorageTest.getCurrentScoreTest();
+    expect(score).not.toBe(390);
   });
 });
 
