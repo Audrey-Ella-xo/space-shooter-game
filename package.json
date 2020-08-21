@@ -1,0 +1,53 @@
+{
+  "name": "space-shooter-game",
+  "version": "1.0.0",
+  "description": "A Phaser 3 game capstone project",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack --config webpack/prod.js ",
+    "start": "webpack-dev-server --config webpack/base.js --open",
+    "test": "jest",
+    "watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Audrey-Ella-xo/space-shooter-game.git"
+  },
+  "keywords": [],
+  "author": "Odiaka Emmanuella Audrey <anitaudrey@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Audrey-Ella-xo/space-shooter-game/issues"
+  },
+  "homepage": "https://github.com/Audrey-Ella-xo/space-shooter-game#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.0.3",
+    "css-loader": "^3.5.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^26.1.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "raw-loader": "^3.1.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "terser-webpack-plugin": "^4.1.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "node-fetch": "^2.6.0",
+    "phaser": "^3.24.1",
+    "regenerator-runtime": "^0.13.7"
+  }
+}
