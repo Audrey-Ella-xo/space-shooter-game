@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import '~bootstrap/scss/bootstrap';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: #120418;
+  font-family: 'Russo One', sans-serif, !important;
+  color: #444040;
+  font-weight: bolder;
+}
+
+canvas {
+  margin-left: 50px;
+}
+
+canvas, .side-bar {
+  border-radius: 15px;
+  box-shadow: 1px 1px 7px 4px #452373;
+}
+.container{
+  padding: 10px;
+}
+
+.side-bar {
+  background: #fff;
+  padding: 20px;
+  margin-left: -50px;
+  h3 {
+    font-weight: bolder;;
+    font-size: 36px;
+  }
+
+  .social {
+    margin-top: 150px;
+    a {
+      font-size: 38px;
+      color: #452373
+    }
+  }
+
+  .footer {
+    margin-top: 100px;
+  }
+}
